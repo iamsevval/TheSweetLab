@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatlı Günlükler - The Sweet Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="background-color: #FFF9FA;">
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner-ring"></div>
+            <img src="../assets/images/logo.png" alt="Yükleniyor..." class="loader-logo">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="../assets/images/logo.png" alt="Sweet Lab">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home text-pink me-1"></i> Ana Sayfa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recipes.html">
+                            <i class="fas fa-utensils text-pink me-1"></i> Tarifler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">
+                            <i class="fas fa-pen-nib text-pink me-1"></i> Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope text-pink me-1"></i> İletişim
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle text-pink me-1"></i> Hakkımızda
+                        </a>
+                    </li>
+                    <li class="nav-item" id="nav-favorites" style="display: none;">
+                        <a class="nav-link" href="favorites.html">
+                            <i class="fas fa-heart text-pink me-1"></i> Favorilerim
+                        </a>
+                    </li>
+                </ul>
+                <a href="profile.html" class="btn btn-custom" id="nav-profile-btn">
+                    <i class="fas fa-user"></i> Profil
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="blog-header text-center py-5" style="margin-top: 80px; background-color: #FFF0F5;">
+        <h1 class="script-font" style="font-size: 3.5rem; color: #C76B86;">Le Journal Sucré</h1>
+        <p class="text-muted text-uppercase letter-spacing-2">Tatlı, Sanat ve Yaşam Üzerine Notlar</p>
+    </div>
+
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <div id="recipe-view-section" style="display: none;">
+                    <div class="recipe-detail-card bg-white shadow-sm rounded-4 overflow-hidden mb-5">
+                        <img id="main-recipe-img" src="" class="w-100" style="max-height: 500px; object-fit: cover;">
+
+                        <div class="p-5 text-center">
+                            <h1 id="recipe-title" class="display-4 script-font" style="color: #C76B86;"></h1>
+
+                            <div class="meta-info mb-4">
+                                <span class="mx-3"><i class="fas fa-clock text-pink"></i> <span id="prep-time"></span>
+                                    dk</span>
+                                <span class="mx-3"><i class="fas fa-user text-pink"></i> <span
+                                        id="recipe-author"></span></span>
+                            </div>
+
+                            <div class="row text-start mt-5">
+                                <div class="col-md-5 mb-4 mb-md-0">
+                                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2">
+                                        <h4 class="text-pink mb-0">Malzemeler</h4>
+
+                                        <div
+                                            class="portion-selector d-flex align-items-center bg-light rounded-pill px-2 py-1">
+                                            <button class="btn btn-sm p-0 text-pink" onclick="updateServings(-1)">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </button>
+                                            <span id="current-servings" class="mx-2 fw-bold small text-pink">4</span>
+                                            <button class="btn btn-sm p-0 text-pink" onclick="updateServings(1)">
+                                                <i class="fas fa-plus-circle"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <ul id="ingredients-list" class="list-unstyled mt-3"></ul>
+                                </div>
+
+                                <div class="col-md-7">
+                                    <h4 class="text-pink border-bottom pb-2">Hazırlanışı</h4>
+                                    <p id="instructions-text" class="mt-3" style="line-height: 1.8;"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comment-section bg-white shadow-sm rounded-4 p-5">
+                        <h3 class="mb-4">Yorumlar (<span id="comment-count">0</span>)</h3>
+                        <div class="share-box mb-5">
+                            <textarea id="comment-text" class="form-control mb-3" rows="3"
+                                placeholder="Tarif hakkında ne düşünüyorsun?"></textarea>
+
+                            <button class="btn btn-post-comment float-end" onclick="postComment()">
+                                <i class="fas fa-paper-plane me-2"></i> Yorumu Paylaş
+                            </button>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div id="comments-container"></div>
+                    </div>
+                </div>
+
+                <div id="add-recipe-view-section" style="display: none;">
+                    <div class="auth-box shadow-lg bg-white rounded-4"
+                        style="padding: 40px; border-top: 5px solid #C76B86;">
+                        <div class="text-center mb-4">
+                            <span style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: #C76B86;">Paylaş</span>
+                            <h2 class="fw-bold" style="font-family: 'Playfair Display', serif; color: #333;">Kendi Tarifini Ekle</h2>
+                            <p class="text-muted small">Tarifleriniz AI analizi sonrası yayınlanacaktır.</p>
+                        </div>
+
+                        <form id="recipeForm">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <label class="input-group-text bg-white text-muted" for="r-image">
+                                            <i class="fas fa-camera text-pink"></i>
+                                        </label>
+                                        <input type="file" class="form-control auth-input" id="r-image" accept="image/*" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="r-title" class="form-control auth-input" placeholder="Tarif Adı" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <select id="r-category" class="form-select auth-input" required>
+                                        <option value="" selected disabled>Kategori Seçin</option>
+                                        <option value="kek-pasta">Kek & Pasta 🍰</option>
+                                        <option value="sutlu">Sütlü & Krema 🍮</option>
+                                        <option value="serbetli">Şerbetli & Kızartma Tatlılar 🍩</option>
+                                        <option value="diyet">Diyet & Hafif Tatlılar 🌱</option>
+                                        <option value="cikolatali">Çikolatalı 🍫</option>
+                                        <option value="soguk">Soğuk & Dondurulmuş 🍨</option>
+                                        <option value="meyveli">Meyveli 🍎</option>
+                                        <option value="geleneksel">Geleneksel 🫘</option>
+                                        <option value="kurabiye">Kurabiyeler 🍪</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <input type="number" id="r-prep-time" class="form-control auth-input" placeholder="Hazırlık (Dk)" min="0" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" id="r-cook-time" class="form-control auth-input" placeholder="Pişirme (Dk)" min="0" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" id="r-person" class="form-control auth-input" placeholder="Kaç Kişilik?" min="1" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea id="r-ingredients" class="form-control auth-input" rows="3" placeholder="Malzemeler (Her birini yeni satıra yazın...)" style="border-radius: 20px !important;" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <textarea id="r-desc" class="form-control auth-input" rows="5" placeholder="Tarifin Yapılışı / Adımlar..." style="border-radius: 20px !important;" required></textarea>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-auth w-100 py-3">
+                                        <i class="fas fa-magic me-2"></i> AI Analizi ile Gönder
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div id="ai-loading" class="text-center mt-4" style="display: none;">
+                            <div class="spinner-border text-pink" role="status"></div>
+                            <p class="text-muted mt-2">Analiz ediliyor...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="guest-warning-section" class="text-center py-5" style="display: none;">
+                    <div class="p-5 rounded-4" style="background-color: #fff0f5; border: 2px dashed #E89EB3;">
+                        <i class="fas fa-cookie-bite fa-3x text-pink mb-3"></i>
+                        <h3 style="font-family: 'Playfair Display', serif;">Tarif Paylaşmak İçin Giriş Yapmalısın</h3>
+                        <p class="text-muted">Aramıza katılıp kendi lezzetlerini paylaşmak için hemen giriş yap.</p>
+                        <a href="profile.html" class="btn btn-custom mt-2 px-4 py-2">Giriş Yap / Üye Ol</a>
+                    </div>
+                </div>
+
+            </div> <aside class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4 p-4 text-center reveal">
+                    <h4 class="script-font text-pink mb-3" style="font-size: 2.5rem; line-height: 1;">Mutfakların
+                        Favorisi</h4>
+
+                    <div id="weekly-sweet-container">
+                        <div class="position-relative overflow-hidden rounded-4 mb-3 shadow-sm" style="height: 220px;">
+                            <img id="weekly-sweet-img" src="" class="img-fluid h-100 w-100"
+                                style="object-fit: cover; cursor: pointer;"
+                                onclick="document.getElementById('weekly-sweet-link').click();">
+                        </div>
+
+                        <h5 id="weekly-sweet-title" class="fw-bold text-dark mb-1"></h5>
+                        <p id="weekly-sweet-desc" class="text-muted small mb-4"></p>
+
+                        <a id="weekly-sweet-link" href="#" class="btn btn-custom w-100"
+                            style="font-family: 'Cinzel', serif !important;" data-text="Tarifi Dene"
+                            data-hover="Hemen İncele">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-4 p-4 text-center bg-white mb-4 reveal">
+                    <h4 class="script-font text-pink mb-3" style="font-size: 2.2rem; line-height: 1;">Paylaş & İlham Ol
+                    </h4>
+                    <p class="text-muted small mb-4">Bu lezzeti sevdiklerinle paylaşmaya ne dersin?</p>
+
+                    <div class="d-flex justify-content-center gap-4">
+                        <a href="#" id="share-wa" target="_blank" class="share-icon-btn wa-hover"
+                            title="WhatsApp ile Gönder">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+
+                        <a href="#" id="share-pin" target="_blank" class="share-icon-btn pin-hover"
+                            title="Pinterest'e Kaydet">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 reveal">
+                    <h3>The Sweet Lab</h3>
+                    <p>2020'den beri geleneksel Fransız pastacılık sanatını modern dokunuşlarla İstanbul'a getiriyoruz.
+                    </p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 text-center reveal">
+                    <h4>Hızlı Erişim</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><a href="index.html" class="footer-link">Ana Sayfa</a></li>
+                        <li class="mb-2"><a href="recipes.html" class="footer-link">Tarifler</a></li>
+                        <li class="mb-2"><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li class="mb-2"><a href="about.html" class="footer-link">Hakkımızda</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link">İletişim</a></li>
+                        <li class="mb-2"><a href="profile.html" class="footer-link">Profil</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4 reveal">
+                    <h4>Bize Ulaşın</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kışla+Caddesi+No:5,+Beyoğlu+İstanbul"
+                                target="_blank" class="footer-link">
+                                <i class="fas fa-map-marker-alt me-2"></i> Kışla Caddesi No:5, İstanbul
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="tel:+902121234567" class="footer-link">
+                                <i class="fas fa-phone me-2"></i> +90 212 123 45 67
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="mailto:info@thesweetlab.com" class="footer-link">
+                                <i class="fas fa-envelope me-2"></i> info@thesweetlab.com
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <span class="footer-text-hover">
+                                <i class="far fa-clock me-2"></i> Her Gün: 09.00 - 22.00
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center pt-3">
+                <p class="mb-0">© 2025 The Sweet Lab. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            if (id) {
+                // DURUM 1: URL'de ID var -> Tarif Detayını Göster
+                document.getElementById('recipe-view-section').style.display = 'block';
+                // main.js içindeki openRecipePreview fonksiyonunu tetikle
+                setTimeout(() => { if(window.openRecipePreview) window.openRecipePreview(id); }, 100);
+            } else {
+                // DURUM 2: URL'de ID yok -> Tarif Ekleme Formunu Göster (Giriş Kontrolü ile)
+                fetch('/user')
+                    .then(r => r.json())
+                    .then(user => {
+                        if (user.loggedIn) {
+                            document.getElementById('add-recipe-view-section').style.display = 'block';
+                        } else {
+                            document.getElementById('guest-warning-section').style.display = 'block';
+                        }
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+/* MAIN CONFIG (Variables, Reset, Animations)*/
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Raleway:wght@300;400;600&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    /* Colors */
+    --primary-pink: #E89EB3;
+    --deep-pink: #C76B86;
+    --dark-pink: #a84b65;
+    --soft-white: #FFF9FA;
+    --text-dark: #2C2C2C;
+    --text-muted: #777;
+    --gold-accent: #D4AF37;
+    
+    /* Fonts */
+    --font-heading: 'Cinzel', serif;        
+    --font-body: 'Raleway', sans-serif;      
+    --font-script: 'Great Vibes', cursive;   
+    --font-serif: 'Playfair Display', serif; 
+}
+
+/* Base Settings */
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background-color: var(--soft-white);
+    padding-top: 0;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Utility Classes */
+.text-pink { color: var(--deep-pink) !important; }
+.object-fit-cover { object-fit: cover; }
+.text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--deep-pink);
+    border-radius: 2px;
+}
+
+/* Scroll Reveal Animation Base */
+.reveal {
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* PRELOADER & ANIMATIONS */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--soft-white);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-logo {
+    width: 70px;
+    height: auto;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.spinner-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-top-color: var(--gold-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+/* Keyframes Definitions */
+@keyframes heartbeat {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes magicWipe {
+    0% { width: 0; opacity: 0; }
+    5% { opacity: 1; }
+    100% { width: 100%; opacity: 1; }
+}
+
+@keyframes zoomEffect {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+@keyframes floatBadge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+    .cake-anim {
+        color: #C76B86; 
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        display: inline-block;
+    }
+
+    .cake-anim:hover {
+        transform: rotate(360deg) scale(1.2); 
+        color: #ff9a9e; 
+        filter: drop-shadow(0 5px 15px rgba(199, 107, 134, 0.4)); 
+    }

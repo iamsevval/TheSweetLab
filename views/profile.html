@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilim</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner-ring"></div>
+            <img src="../assets/images/logo.png" alt="Yükleniyor..." class="loader-logo">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="../assets/images/logo.png" alt="Sweet Lab">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home text-pink me-1"></i> Ana Sayfa
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="recipes.html">
+                            <i class="fas fa-utensils text-pink me-1"></i> Tarifler
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-pen-nib text-pink me-1"></i> Blog
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope text-pink me-1"></i> İletişim
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle text-pink me-1"></i> Hakkımızda
+                        </a>
+                    </li>
+
+                    <li class="nav-item" id="nav-favorites" style="display: none;">
+                        <a class="nav-link" href="favorites.html">
+                            <i class="fas fa-heart text-pink me-1"></i> Favorilerim
+                        </a>
+                    </li>
+                </ul>
+                <a href="profile.html" class="btn btn-custom" id="nav-profile-btn">
+                    <i class="fas fa-user"></i> Profil
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="auth-page py-5 d-flex align-items-center justify-content-center"
+        style="background-color: #FFF9FA; min-height: 80vh;">
+
+        <!-- AUTH BOX -->
+        <div class="auth-box bg-white shadow-sm rounded-4 overflow-hidden">
+
+            <div class="auth-tabs d-flex">
+                <button class="tab-btn active w-50 py-3">Giriş Yap</button>
+                <button class="tab-btn w-50 py-3">Üye Ol</button>
+            </div>
+
+            <div class="p-5">
+
+                <!-- LOGIN FORM -->
+                <div id="login-form" class="auth-content">
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold mb-2" style="color: #333;">Tekrar Hoş Geldiniz</h3>
+                        <p class="text-muted small">Favori tariflerinize erişmek için giriş yapın.</p>
+                    </div>
+
+                    <form action="/login" method="POST">
+                        <div class="input-wrapper mb-3">
+                            <i class="far fa-user input-icon"></i>
+                            <input type="text" name="username" class="form-control auth-input"
+                                placeholder="Kullanıcı Adı" required>
+                        </div>
+
+                        <div class="input-wrapper mb-4">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" name="password" class="form-control auth-input" placeholder="Şifre"
+                                required>
+                        </div>
+
+                        <button type="submit" class="btn btn-auth w-100 py-2 mb-3">Giriş Yap</button>
+
+                        <div class="text-center">
+                            <span class="text-muted small">Şifreni mi unuttun?</span>
+                            <a href="#" class="text-pink text-decoration-none small ms-1">Sıfırla</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- REGISTER FORM -->
+                <div id="register-form" class="auth-content" style="display: none;">
+                    <div class="text-center mb-4">
+                        <h3 class="fw-bold mb-2" style="color: #333;">Aramıza Katılın</h3>
+                        <p class="text-muted small">Kendi tariflerinizi paylaşmak için hesap oluşturun.</p>
+                    </div>
+
+                    <form action="/register" method="POST">
+                        <div class="input-wrapper mb-3">
+                            <i class="far fa-user input-icon"></i>
+                            <input type="text" name="username" class="form-control auth-input"
+                                placeholder="Kullanıcı Adı" required>
+                        </div>
+
+                        <div class="input-wrapper mb-3">
+                            <i class="far fa-envelope input-icon"></i>
+                            <input type="email" id="register-email" name="email" class="form-control auth-input"
+                                placeholder="E-posta Adresiniz" required>
+                        </div>
+
+                        <div class="input-wrapper mb-4">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" name="password" class="form-control auth-input"
+                                placeholder="Şifre Belirleyin" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-auth w-100 py-2">Üye Ol</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PROFILE DASHBOARD -->
+        <div id="profile-dashboard" class="container py-5 reveal" style="display: none;">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card shadow-sm border-0 rounded-4 text-center p-4">
+                        <div class="position-relative d-inline-block mx-auto mb-3">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6858/6858504.png" alt="Profil"
+                                class="rounded-circle border p-2" width="120">
+                            <span class="position-absolute bottom-0 end-0 bg-pink text-white rounded-circle p-2"
+                                style="cursor:pointer;"
+                                onclick="Swal.fire('Yakında!', 'Profil fotoğrafı yükleme özelliği yakında eklenecek.', 'info')">
+                                <i class="fas fa-camera fa-xs"></i>
+                            </span>
+                        </div>
+
+                        <h3 class="fw-bold" style="font-family: 'Playfair Display', serif;">
+                            <span id="user-name-display" class="text-pink"></span>
+                        </h3>
+                        <p class="text-muted small">Sweet Lab Üyesi</p>
+
+                        <div class="d-flex justify-content-around my-3 border-top border-bottom py-3">
+                            <div>
+                                <h5 class="mb-0 fw-bold" id="my-recipe-count">0</h5>
+                                <small class="text-muted">Tarif</small>
+                            </div>
+                            <div>
+                                <h5 class="mb-0 fw-bold" id="my-fav-count">0</h5>
+                                <small class="text-muted">Favori</small>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-auth btn-sm" onclick="showUpdateModal()">
+                                <i class="fas fa-user-edit me-2"></i> Bilgilerimi Güncelle
+                            </button>
+                            <a href="/logout" class="btn btn-outline-dark btn-sm">
+                                <i class="fas fa-sign-out-alt me-2"></i> Güvenli Çıkış
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="mb-0" style="font-family: 'Playfair Display', serif;">
+                                <i class="fas fa-utensils text-pink me-2"></i> Paylaştığım Tarifler
+                            </h4>
+                            <a href="blog.html#add-recipe-view-section" class="btn btn-pink-light btn-sm rounded-pill">
+                                <i class="fas fa-plus me-1"></i> Yeni Ekle
+                            </a>
+                        </div>
+
+                        <div id="my-recipes-list" class="row g-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="recipePreviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; background-color: #FFF9FA;">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img id="modal-img" src="" class="img-fluid h-100 w-100"
+                                style="object-fit: cover; border-radius: 20px 0 0 20px; min-height: 400px;">
+                        </div>
+
+                        <div class="col-md-7 p-4">
+                            <h2 id="modal-title" class="script-font mb-2" style="color: #C76B86;"></h2>
+                            <div class="badge bg-light text-pink mb-3" id="modal-category"></div>
+
+                            <div class="modal-ingredients-container mb-4" style="max-height: 250px; overflow-y: auto;">
+                                <ul id="modal-ingredients-list" class="list-unstyled"></ul>
+                            </div>
+                            <div id="modal-description" style="display: none;"></div>
+
+                            <hr>
+                            <div class="d-grid mt-3">
+                                <a id="modal-detail-link" href="#"
+                                    class="btn btn-custom w-100 rounded-pill py-2 fw-bold"
+                                    data-text="Detaya Git & Yorum Yap" data-hover="Hemen İncele">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="editRecipeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; background-color: #FFF9FA;">
+                <div class="modal-header border-0 pt-4 px-4">
+                    <h3 class="mb-0"
+                        style="color: #C76B86; font-size: 3rem; font-family: var(--font-script); border: none; background: transparent;">
+                        Tarifi Güncelle
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="editRecipeForm" enctype="multipart/form-data">
+                        <input type="hidden" id="edit-r-id">
+                        <div class="row g-3">
+
+                            <div class="col-12 mb-2">
+                                <label class="form-label small fw-bold text-muted">Tarif Fotoğrafını Değiştir (Seçim
+                                    yapmazsanız mevcut fotoğraf kalır)
+                                </label>
+                                <div class="input-group">
+                                    <label class="input-group-text bg-white text-muted" for="edit-r-image">
+                                        <i class="fas fa-camera text-pink"></i>
+                                    </label>
+                                    <input type="file" class="form-control rounded-pill border-light shadow-sm"
+                                        id="edit-r-image" accept="image/*"
+                                        style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">Tarif Başlığı</label>
+                                <input type="text" id="edit-r-title"
+                                    class="form-control rounded-pill border-light shadow-sm" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">Kategori</label>
+                                <select id="edit-r-category" class="form-select rounded-pill border-light shadow-sm">
+                                    <option value="kek-pasta">Kek & Pasta 🍰</option>
+                                    <option value="sutlu">Sütlü & Krema 🍮</option>
+                                    <option value="serbetli">Şerbetli & Tatlılar 🍩</option>
+
+                                    <option value="diyet">Diyet & Hafif Tatlılar 🌱</option>
+
+                                    <option value="cikolatali">Çikolatalı 🍫</option>
+                                    <option value="soguk">Soğuk & Dondurulmuş 🍨</option>
+                                    <option value="meyveli">Meyveli 🍎</option>
+                                    <option value="geleneksel">Geleneksel 🫘</option>
+
+                                    <option value="kurabiye">Kurabiyeler 🍪</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted">Hazırlık (Dk)</label>
+                                <input type="number" id="edit-r-prep"
+                                    class="form-control rounded-pill border-light shadow-sm">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted">Pişirme (Dk)</label>
+                                <input type="number" id="edit-r-cook"
+                                    class="form-control rounded-pill border-light shadow-sm">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted">Kişi Sayısı</label>
+                                <input type="number" id="edit-r-servings"
+                                    class="form-control rounded-pill border-light shadow-sm">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">Malzemeler</label>
+                                <textarea id="edit-r-ingredients" class="form-control border-light shadow-sm" rows="3"
+                                    style="border-radius: 15px;"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-bold text-muted">Yapılışı</label>
+                                <textarea id="edit-r-desc" class="form-control border-light shadow-sm" rows="5"
+                                    style="border-radius: 15px;"></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" id="btn-update-recipe"
+                                    class="btn btn-custom w-100 rounded-pill py-2 fw-bold">
+                                    Değişiklikleri Kaydet <i class="fas fa-save ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 reveal">
+                    <h3>The Sweet Lab</h3>
+                    <p>2020'den beri geleneksel Fransız pastacılık sanatını modern dokunuşlarla
+                        İstanbul'a getiriyoruz.
+                        Her tatlımızda sanat ve lezzeti buluşturuyoruz.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 text-center reveal">
+                    <h4>Hızlı Erişim</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><a href="index.html" class="footer-link">Ana Sayfa</a></li>
+                        <li class="mb-2"><a href="recipes.html" class="footer-link">Tarifler</a></li>
+                        <li class="mb-2"><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li class="mb-2"><a href="about.html" class="footer-link">Hakkımızda</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link">İletişim</a></li>
+                        <li class="mb-2"><a href="profile.html" class="footer-link">Profil</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4 reveal">
+                    <h4>Bize Ulaşın</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kışla+Caddesi+No:5,+Beyoğlu+İstanbul"
+                                target="_blank" class="footer-link">
+                                <i class="fas fa-map-marker-alt me-2"></i> Kışla Caddesi No:5, İstanbul
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a href="tel:+902121234567" class="footer-link">
+                                <i class="fas fa-phone me-2"></i> +90 212 123 45 67
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a href="mailto:info@thesweetlab.com" class="footer-link">
+                                <i class="fas fa-envelope me-2"></i> info@thesweetlab.com
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <span class="footer-text-hover">
+                                <i class="far fa-clock me-2"></i> Her Gün: 09.00 - 22.00
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center pt-3">
+                <p class="mb-0">© 2025 The Sweet Lab. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module" src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Backend'e sessizce soruyoruz: "Kim var?"
+            fetch('/user?t=' + new Date().getTime())
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        // GİRİŞ VARSA: Formu gizle, Paneli aç
+                        document.querySelector('.auth-box').style.display = 'none';
+                        document.getElementById('profile-dashboard').style.display = 'block';
+                        document.getElementById('user-name-display').innerText = data.username;
+                    } else {
+                        // GİRİŞ YOKSA: Form açık kalsın
+                        document.querySelector('.auth-box').style.display = 'block';
+                        document.getElementById('profile-dashboard').style.display = 'none';
+                    }
+                })
+                .catch(error => console.error('Hata:', error));
+        });
+    </script>
+</body>
+
+</html>

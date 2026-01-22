@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim & Öneri - The Sweet Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner-ring"></div>
+            <img src="../assets/images/logo.png" alt="Yükleniyor..." class="loader-logo">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="../assets/images/logo.png" alt="Sweet Lab">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home text-pink me-1"></i> Ana Sayfa
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="recipes.html">
+                            <i class="fas fa-utensils text-pink me-1"></i> Tarifler
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-pen-nib text-pink me-1"></i> Blog
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">
+                            <i class="fas fa-envelope text-pink me-1"></i> İletişim
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle text-pink me-1"></i> Hakkımızda
+                        </a>
+                    </li>
+
+                    <li class="nav-item" id="nav-favorites" style="display: none;">
+                        <a class="nav-link" href="favorites.html">
+                            <i class="fas fa-heart text-pink me-1"></i> Favorilerim
+                        </a>
+                    </li>
+                </ul>
+                <a href="profile.html" class="btn btn-custom" id="nav-profile-btn">
+                    <i class="fas fa-user"></i> Profil
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header" style="background-image: url('../assets/images/kapak2.jpg');">
+        <div class="overlay"></div>
+        <div class="container header-content">
+            <p>Görüşleriniz, önerileriniz bizim için değerli.</p>
+        </div>
+    </section>
+
+    <section class="contact-page py-5" style="background-color: #FFF9FA;">
+        <div class="container">
+            <div class="row gx-5">
+
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="contact-info-content">
+                        <span class="sub-title"
+                            style="font-family: 'Great Vibes', cursive; color: #C76B86; font-size: 1.8rem;">Adresimiz</span>
+                        <h2 class="main-title mb-5" style="font-family: 'Playfair Display', serif; font-weight: bold;">
+                            Ziyaret Edin</h2>
+
+                        <div class="d-flex mb-4 align-items-start">
+                            <div class="icon-box me-3">
+                                <i class="fas fa-map-marker-alt fa-2x" style="color: #C76B86;"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1 fw-bold">Konum</h5>
+                                <a href="https://goo.gl/maps/Xyz123" target="_blank" class="contact-link">
+                                    Kışla Caddesi No:5, Beyoğlu / İstanbul
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-4 align-items-start">
+                            <div class="icon-box me-3">
+                                <i class="fas fa-phone-alt fa-2x" style="color: #C76B86;"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1 fw-bold">Telefon</h5>
+                                <a href="tel:+902121234567" class="contact-link">
+                                    +90 212 123 45 67
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mb-5 align-items-start">
+                            <div class="icon-box me-3">
+                                <i class="fas fa-envelope fa-2x" style="color: #C76B86;"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1 fw-bold">E-Posta</h5>
+                                <a href="mailto:info@thesweetlab.com" class="contact-link">
+                                    info@thesweetlab.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="map-container shadow rounded overflow-hidden">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.749746437291!2d29.02874!3d40.99026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab867c4627e77%3A0x769b07a56113702a!2sBa%C4%9Fdat%20Cd.%2C%20Kad%C4%B1k%C3%B6y%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1625666000000!5m2!1str!2str"
+                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="contact-form-box bg-white p-5 shadow rounded-3">
+                        <span class="sub-title"
+                            style="font-family: 'Great Vibes', cursive; color: #C76B86; font-size: 1.8rem;">Yöneticiye
+                            Mesaj</span>
+                        <h2 class="main-title mb-4" style="font-family: 'Playfair Display', serif; font-weight: bold;">
+                            Öneri & İletişim Formu</h2>
+
+                        <form action="https://formspree.io/f/mqeekvzw" method="POST" id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" name="ad_soyad" class="form-control contact-input"
+                                        placeholder="Adınız Soyadınız" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" class="form-control contact-input"
+                                        placeholder="E-posta Adresiniz" required>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <select name="konu" class="form-select contact-input" required>
+                                        <option value="" selected disabled>Konu Seçiniz</option>
+                                        <option value="Oneri-Sikayet">Öneri / Şikayet</option>
+                                        <option value="Is-Basvurusu">İş Başvurusu</option>
+                                        <option value="Diger">Diğer</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <textarea name="mesaj" class="form-control contact-input" rows="5"
+                                        placeholder="Mesajınız veya Öneriniz..." required></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-contact w-100">Gönder</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 reveal">
+                    <h3>The Sweet Lab</h3>
+                    <p>2020'den beri geleneksel Fransız pastacılık sanatını modern dokunuşlarla İstanbul'a getiriyoruz.
+                        Her tatlımızda sanat ve lezzeti buluşturuyoruz.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 text-center reveal">
+                    <h4>Hızlı Erişim</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><a href="index.html" class="footer-link">Ana Sayfa</a></li>
+                        <li class="mb-2"><a href="recipes.html" class="footer-link">Tarifler</a></li>
+                        <li class="mb-2"><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li class="mb-2"><a href="about.html" class="footer-link">Hakkımızda</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link">İletişim</a></li>
+                        <li class="mb-2"><a href="profile.html" class="footer-link">Profil</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4 reveal">
+                    <h4>Bize Ulaşın</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kışla+Caddesi+No:5,+Beyoğlu+İstanbul"
+                                target="_blank" class="footer-link">
+                                <i class="fas fa-map-marker-alt me-2"></i> Kışla Caddesi No:5, İstanbul
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a href="tel:+902121234567" class="footer-link">
+                                <i class="fas fa-phone me-2"></i> +90 212 123 45 67
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a href="mailto:info@thesweetlab.com" class="footer-link">
+                                <i class="fas fa-envelope me-2"></i> info@thesweetlab.com
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <span class="footer-text-hover">
+                                <i class="far fa-clock me-2"></i> Her Gün: 09.00 - 22.00
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center pt-3">
+                <p class="mb-0">© 2025 The Sweet Lab. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module" src="../assets/js/main.js"></script>
+</body>
+
+</html>

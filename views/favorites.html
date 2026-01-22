@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorilerim - The Sweet Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body style="background-color: #FFF9FA;">
+
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner-ring"></div>
+            <img src="../assets/images/logo.png" alt="Yükleniyor..." class="loader-logo">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="../assets/images/logo.png" alt="Sweet Lab">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home text-pink me-1"></i> Ana Sayfa
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="recipes.html">
+                            <i class="fas fa-utensils text-pink me-1"></i> Tarifler
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fas fa-pen-nib text-pink me-1"></i> Blog
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope text-pink me-1"></i> İletişim
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle text-pink me-1"></i> Hakkımızda
+                        </a>
+                    </li>
+
+                    <li class="nav-item" id="nav-favorites" style="display: none;">
+                        <a class="nav-link active" href="favorites.html">
+                            <i class="fas fa-heart text-pink me-1"></i> Favorilerim
+                        </a>
+                    </li>
+                </ul>
+                <a href="profile.html" class="btn btn-custom" id="nav-profile-btn">
+                    <i class="fas fa-user"></i> Profil
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header" style="background-image: url('../assets/images/kapak1.jpg'); height: 300px;">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1 style="font-family: 'Playfair Display', serif; color: white;">Favori Lezzetlerim</h1>
+            <p>Kaydettiğin en tatlı tarifler burada.</p>
+        </div>
+    </section>
+
+    <section class="container section-padding mt-5">
+        <div class="row g-4" id="favorites-grid">
+            <div class="text-center py-5" id="fav-loader">
+                <div class="spinner-border text-pink" role="status"></div>
+                <p class="text-muted mt-2">Favorileriniz getiriliyor...</p>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade" id="recipePreviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 20px; border: none; background-color: #FFF9FA;">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img id="modal-img" src="" class="img-fluid h-100 w-100"
+                                style="object-fit: cover; border-radius: 20px 0 0 20px;">
+                        </div>
+                        <div class="col-md-7 p-4">
+                            <h2 id="modal-title" class="script-font" style="color: #C76B86;"></h2>
+                            <div class="badge bg-light text-pink mb-3" id="modal-category"></div>
+
+                            <p id="modal-description" class="text-muted small"></p>
+
+                            <ul id="modal-ingredients-list" class="list-unstyled mt-3"
+                                style="max-height: 200px; overflow-y: auto;">
+                            </ul>
+
+                            <hr>
+                            <div class="d-grid">
+                                <a id="modal-detail-link" href="#"
+                                    class="btn btn-custom w-100 rounded-pill py-2 fw-bold">
+                                    Devamını Oku & Yorum Yap <i class="fas fa-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 reveal">
+                    <h3>The Sweet Lab</h3>
+                    <p>2020'den beri geleneksel Fransız pastacılık sanatını modern dokunuşlarla İstanbul'a
+                        getiriyoruz.
+                    </p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4 text-center reveal">
+                    <h4>Hızlı Erişim</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><a href="index.html" class="footer-link">Ana Sayfa</a></li>
+                        <li class="mb-2"><a href="recipes.html" class="footer-link">Tarifler</a></li>
+                        <li class="mb-2"><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li class="mb-2"><a href="about.html" class="footer-link">Hakkımızda</a></li>
+                        <li class="mb-2"><a href="contact.html" class="footer-link">İletişim</a></li>
+                        <li class="mb-2"><a href="profile.html" class="footer-link">Profil</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4 reveal">
+                    <h4>Bize Ulaşın</h4>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kışla+Caddesi+No:5,+Beyoğlu+İstanbul"
+                                target="_blank" class="footer-link">
+                                <i class="fas fa-map-marker-alt me-2"></i> Kışla Caddesi No:5, İstanbul
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="tel:+902121234567" class="footer-link">
+                                <i class="fas fa-phone me-2"></i> +90 212 123 45 67
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="mailto:info@thesweetlab.com" class="footer-link">
+                                <i class="fas fa-envelope me-2"></i> info@thesweetlab.com
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <span class="footer-text-hover">
+                                <i class="far fa-clock me-2"></i> Her Gün: 09.00 - 22.00
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary">
+            <div class="text-center pt-3">
+                <p class="mb-0">© 2025 The Sweet Lab. Tüm Hakları Saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('/user')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.loggedIn) {
+                        // Giriş yapılmamışsa profile yönlendir
+                        window.location.href = "profile.html";
+                    }
+                });
+        });
+    </script>
+</body>
+
+</html>
