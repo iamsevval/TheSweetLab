@@ -5,11 +5,6 @@
 ![Project Status](https://img.shields.io/badge/Status-Completed-success)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-## 🌐 Canlı Demo & Linkler
-
-* **GitHub Reposu:** [https://github.com/iamsevval/TheSweetLab](https://github.com/iamsevval/TheSweetLab)
-* **Canlı Proje (Render):** [https://thesweetlab-sevval.onrender.com/]
-
 ## 🚀 Proje Hakkında
 
 Bu proje, **Web Tasarım ve Programlama** dersi final projesi olarak geliştirilmiştir. Node.js ve Express.js altyapısı üzerine kurulan sistem, dinamik içerik yönetimi (CRUD) ve kullanıcı etkileşimi (Auth, Yorum, Beğeni) özelliklerini barındırır.
