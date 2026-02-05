@@ -365,6 +365,8 @@ export function loadCommunityRecipes() {
                                     </div>
                                 </div>`;
                             });
+                            setupFilters();      // Filtre butonlarını dinlemeye başla
+                            handleURLFilter();   // URL'de parametre varsa ilgili butona tıkla
                         });
                 });
         });
