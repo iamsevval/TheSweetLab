@@ -8,7 +8,7 @@
 ## 🌐 Canlı Demo & Linkler
 
 * **GitHub Reposu:** [https://github.com/iamsevval/TheSweetLab](https://github.com/iamsevval/TheSweetLab)
-* **Canlı Proje (Render):** [https://thesweetlab-sevval.onrender.com/]
+* **Canlı Proje (Render):** [https://thesweetlab-sevval.onrender.com/] (Site açılımı birkaç dakika sürebilir, lütfen bekleyiniz.)
 
 ## 🚀 Proje Hakkında
 
