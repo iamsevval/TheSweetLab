@@ -7,7 +7,7 @@ const db = require('../database');
 // --- RESİM YÜKLEME AYARLARI (Multer) ---
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); 
+        cb(null, 'uploads/');
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -31,14 +31,14 @@ router.post('/add-recipe', upload.single('image'), (req, res) => {
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     // 'function(err)' kullanıldığı için 'this.lastID' çalışır.
-    db.run(sql, [title, description, ingredients, category, prep_time, cook_time, servings, imageUrl, userId], function(err) {
+    db.run(sql, [title, description, ingredients, category, prep_time, cook_time, servings, imageUrl, userId], function (err) {
         if (err) {
             console.error(err);
             return res.status(500).json({ error: "Veritabanı hatası!" });
         }
-        
-        res.json({ 
-            success: true, 
+
+        res.json({
+            success: true,
             message: "Tarif başarıyla eklendi!",
             new_recipe_id: this.lastID  // <--- BU SATIR EKLENDİ
         });
@@ -61,7 +61,7 @@ router.delete('/delete-recipe/:id', (req, res) => {
     if (!req.session.userId) return res.status(401).json({ error: "Yetkisiz işlem!" });
 
     const sql = "DELETE FROM recipes WHERE id = ? AND user_id = ?";
-    db.run(sql, [req.params.id, req.session.userId], function(err) {
+    db.run(sql, [req.params.id, req.session.userId], function (err) {
         if (err) return res.status(500).json({ error: err.message });
         res.json({ success: true });
     });
@@ -70,7 +70,7 @@ router.delete('/delete-recipe/:id', (req, res) => {
 // --- 4. TÜM TARİFLERİ GETİR (HERKES İÇİN) ---
 router.get('/recipes', (req, res) => {
     const sql = "SELECT id, title, description, ingredients, category, prep_time, cook_time, servings, image_url, user_id, like_count, cooked_count FROM recipes ORDER BY id DESC";
-    
+
     db.all(sql, [], (err, rows) => {
         if (err) {
             return res.status(500).json({ error: err.message });
@@ -110,7 +110,7 @@ router.get('/my-favorites', (req, res) => {
         FROM recipes r 
         JOIN favorites f ON r.id = f.recipe_id 
         WHERE f.user_id = ? ORDER BY r.id DESC`;
-    
+
     db.all(sql, [req.session.userId], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
@@ -123,13 +123,13 @@ router.post('/recipe/interaction', (req, res) => {
         return res.status(401).json({ success: false, message: "Lütfen giriş yapın." });
     }
 
-    const { recipeId, type, action } = req.body; 
+    const { recipeId, type, action } = req.body;
     const column = type === 'like' ? 'like_count' : 'cooked_count';
-    
+
     const mathOperator = action === 'add' ? '+' : '-';
     const sql = `UPDATE recipes SET ${column} = ${column} ${mathOperator} 1 WHERE id = ?`;
-    
-    db.run(sql, [recipeId], function(err) {
+
+    db.run(sql, [recipeId], function (err) {
         if (err) {
             console.error("Etkileşim hatası:", err);
             return res.status(500).json({ success: false });

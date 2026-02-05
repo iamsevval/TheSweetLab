@@ -5,7 +5,7 @@ export function checkLoginStatus() {
             const navProfileBtn = document.getElementById('nav-profile-btn');
             const addSection = document.getElementById('add-recipe-section');
             const guestWarning = document.getElementById('guest-warning');
-            const navFav = document.getElementById('nav-favorites'); // Navbar'daki kalp ikonlu link
+            const navFav = document.getElementById('nav-favorites');
             const userNameDisplay = document.getElementById('user-name-display');
             const authBox = document.querySelector('.auth-box');
             const profileDashboard = document.getElementById('profile-dashboard');

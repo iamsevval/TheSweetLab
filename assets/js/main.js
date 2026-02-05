@@ -1,21 +1,21 @@
 
 import { setupSlider, setupScrollReveal, setupPreloader, setupAuthTabs } from './modules/ui.js';
 import { checkLoginStatus, setupLogin, setupLogout, setupForgotPassword } from './modules/auth.js';
-import { 
-    setupRecipeForm, 
-    loadProfileRecipes, 
-    setupFilters, 
-    loadCommunityRecipes, 
-    loadFavoriteRecipes, 
+import {
+    setupRecipeForm,
+    loadProfileRecipes,
+    setupFilters,
+    loadCommunityRecipes,
+    loadFavoriteRecipes,
     loadWeeklySweet,
     setupSearch,
-    handleURLFilter 
+    handleURLFilter
 } from './modules/recipes.js';
-import { setupChatbot } from './modules/chatbot.js'; 
+import { setupChatbot } from './modules/chatbot.js';
 import { setupBlogPage } from './modules/blog.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // 1. UI Başlatıcıları
     setupPreloader();
     setupScrollReveal();
@@ -32,20 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Tarif İşlemleri
     setupRecipeForm();
     loadProfileRecipes();
-    loadCommunityRecipes(); 
+    loadCommunityRecipes();
     loadFavoriteRecipes();
     loadWeeklySweet();
     setupFilters();
     setupSearch();
     handleURLFilter(); // Ana sayfadan gelen kategori filtresini yakalar
-    
+
     // 4. Chatbot Başlat
     setupChatbot();
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             const data = new FormData(this);
             try {
                 const response = await fetch(this.action, {
@@ -80,7 +80,7 @@ window.addEventListener('load', () => {
 
         if (targetElement) {
             setTimeout(() => {
-                const headerOffset = 100; 
+                const headerOffset = 100;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -88,7 +88,7 @@ window.addEventListener('load', () => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-            }, 600); 
+            }, 600);
         }
     }
 });

@@ -10,12 +10,12 @@
     --text-dark: #2C2C2C;
     --text-muted: #777;
     --gold-accent: #D4AF37;
-    
+
     /* Fonts */
-    --font-heading: 'Cinzel', serif;        
-    --font-body: 'Raleway', sans-serif;      
-    --font-script: 'Great Vibes', cursive;   
-    --font-serif: 'Playfair Display', serif; 
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Raleway', sans-serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-serif: 'Playfair Display', serif;
 }
 
 /* Base Settings */
@@ -33,9 +33,17 @@ a {
 }
 
 /* Utility Classes */
-.text-pink { color: var(--deep-pink) !important; }
-.object-fit-cover { object-fit: cover; }
-.text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+.text-pink {
+    color: var(--deep-pink) !important;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
 
 .divider {
     width: 60px;
@@ -51,6 +59,7 @@ a {
     opacity: 0;
     transition: 1s all ease;
 }
+
 .reveal.active {
     transform: translateY(0);
     opacity: 1;
@@ -106,39 +115,78 @@ a {
 
 /* Keyframes Definitions */
 @keyframes heartbeat {
-    0% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.1); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.8; }
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes magicWipe {
-    0% { width: 0; opacity: 0; }
-    5% { opacity: 1; }
-    100% { width: 100%; opacity: 1; }
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
 }
 
 @keyframes zoomEffect {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.2); }
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
 }
 
 @keyframes floatBadge {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-    .cake-anim {
-        color: #C76B86; 
-        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        display: inline-block;
+
+    0%,
+    100% {
+        transform: translateY(0);
     }
 
-    .cake-anim:hover {
-        transform: rotate(360deg) scale(1.2); 
-        color: #ff9a9e; 
-        filter: drop-shadow(0 5px 15px rgba(199, 107, 134, 0.4)); 
+    50% {
+        transform: translateY(-10px);
     }
+}
+
+.cake-anim {
+    color: #C76B86;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: inline-block;
+}
+
+.cake-anim:hover {
+    transform: rotate(360deg) scale(1.2);
+    color: #ff9a9e;
+    filter: drop-shadow(0 5px 15px rgba(199, 107, 134, 0.4));
+}

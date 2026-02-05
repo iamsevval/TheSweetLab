@@ -7,7 +7,7 @@ export function setupRecipeForm() {
 
         // --- KATEGORİ SEÇİMİNİ AL ---
         const categoryElement = document.getElementById('r-category');
-        const selectedCategory = categoryElement.value; 
+        const selectedCategory = categoryElement.value;
 
         const imageInput = document.getElementById('r-image');
         if (!imageInput || !imageInput.files[0]) {
@@ -198,8 +198,6 @@ export function setupCommentForm(recipeId) {
 }
 
 /* 2. PROFİL LİSTELEME  */
-
-
 export function loadProfileRecipes() {
     const list = document.getElementById('my-recipes-list');
     if (!list) return;
@@ -406,7 +404,7 @@ export function loadWeeklySweet() {
             if (link) {
                 link.href = `blog.html?id=${topRecipe.id}`;
                 link.setAttribute('data-text', 'TARİFİ HEMEN DENE');
-                link.setAttribute('data-hover', 'HEMEN İNCELE'); 
+                link.setAttribute('data-hover', 'HEMEN İNCELE');
                 link.innerHTML = '';
             }
         })
@@ -722,7 +720,7 @@ export function handleURLFilter() {
                 // Sayfayı tariflerin olduğu yere kaydır
                 filterBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-        }, 500); 
+        }, 500);
     }
 }
 
@@ -920,40 +918,9 @@ export function renderComments(allComments) {
 
     container.innerHTML = finalHtml;
 }
-window.deleteComment = (commentId) => {
-    Swal.fire({
-        title: 'Emin misiniz?',
-        text: "Yorumunuz kalıcı olarak silinecektir!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#C76B86',
-        cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Evet, sil!',
-        cancelButtonText: 'Vazgeç'
-    }).then(async (result) => {
-        if (result.isConfirmed) {
-            try {
-                const res = await fetch(`/api/delete-comment/${commentId}`, {
-                    method: 'DELETE'
-                });
-                const data = await res.json();
 
-                if (data.success) {
-                    Swal.fire('Silindi!', 'Yorum başarıyla kaldırıldı.', 'success');
-                    // Sayfadaki yorumları yenile
-                    const urlParams = new URLSearchParams(window.location.search);
-                    loadComments(urlParams.get('id'));
-                } else {
-                    Swal.fire('Hata', data.error || 'Yorum silinemedi.', 'error');
-                }
-            } catch (err) {
-                console.error("Silme hatası:", err);
-            }
-        }
-    });
-};
 window.replyTo = (username, parentId) => {
-    console.log("Yanıtla basıldı:", username, parentId); 
+    console.log("Yanıtla basıldı:", username, parentId);
     const commentInput = document.getElementById('comment-text');
 
     if (commentInput) {
@@ -973,7 +940,7 @@ window.updateServings = (change) => {
     let current = parseInt(servingsElement.innerText);
     let newPortion = current + change;
 
-    if (newPortion < 1) return; 
+    if (newPortion < 1) return;
     servingsElement.innerText = newPortion;
 
     // Blog sayfasındaki tüm '.ingredient-amount' sınıflarını günceller

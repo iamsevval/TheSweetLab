@@ -50,6 +50,7 @@ db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     recipe_id INTEGER,
+    user_id INTEGER,
     username TEXT,
     comment TEXT,
     parent_id INTEGER DEFAULT NULL,

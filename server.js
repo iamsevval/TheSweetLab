@@ -123,14 +123,23 @@ app.get('/api/recipe-details/:id', (req, res) => {
     });
 });
 
-// YORUM EKLEME
+// YORUM EKLEME 
 app.post('/api/add-comment', (req, res) => {
-    const { recipe_id, comment, parent_id } = req.body;
-    const username = req.session.username || "Anonim Tatlısever";
+    // 1. KONTROL: Kullanıcı giriş yapmış mı?
+    if (!req.session.userId) {
+        return res.json({ success: false, message: "Yorum yapmak için giriş yapmalısınız." });
+    }
 
-    const sql = "INSERT INTO comments (recipe_id, username, comment, parent_id) VALUES (?, ?, ?, ?)";
-    db.run(sql, [recipe_id, username, comment, parent_id || null], function(err) {
-        if (err) return res.status(500).json({ success: false, error: err.message });
+    const { recipe_id, comment, parent_id } = req.body;
+    const username = req.session.username; 
+    const userId = req.session.userId; // Kullanıcının ID'sini alıyoruz
+    const sql = "INSERT INTO comments (recipe_id, user_id, username, comment, parent_id) VALUES (?, ?, ?, ?, ?)";
+    
+    db.run(sql, [recipe_id, userId, username, comment, parent_id || null], function(err) {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).json({ success: false, error: "Veritabanı hatası" });
+        }
         res.json({ success: true, message: "Yorumunuz paylaşıldı!" });
     });
 });

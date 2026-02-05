@@ -3,13 +3,14 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const db = require('../database');
 const nodemailer = require('nodemailer');
+require('dotenv').config(); 
 
 // --- E-POSTA GÖNDERİCİ AYARLARI ---
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'sevvalarslan003@gmail.com',
-        pass: 'vnavlrqeuikyizmn' 
+        user: process.env.EMAIL_USER, 
+        pass: process.env.EMAIL_PASS
     }
 });
 
@@ -115,10 +116,10 @@ router.get('/logout', (req, res) => {
 
 router.get('/user', (req, res) => {
     if (req.session.userId) {
-        res.json({ 
-            loggedIn: true, 
+        res.json({
+            loggedIn: true,
             username: req.session.username,
-            id: req.session.userId  
+            id: req.session.userId
         });
     } else {
         res.json({ loggedIn: false });

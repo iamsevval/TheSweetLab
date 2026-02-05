@@ -88,7 +88,7 @@ window.postComment = async function () {
             body: JSON.stringify({
                 recipe_id: recipeId,
                 comment: comment,
-                parent_id: parentId 
+                parent_id: parentId
             })
         });
         const data = await res.json();
