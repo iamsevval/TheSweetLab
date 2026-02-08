@@ -197,7 +197,7 @@ export function setupCommentForm(recipeId) {
     });
 }
 
-/* 2. PROFİL LİSTELEME  */
+/* PROFİL LİSTELEME  */
 export function loadProfileRecipes() {
     const list = document.getElementById('my-recipes-list');
     if (!list) return;
@@ -447,7 +447,7 @@ function loadRecipesWithoutFavCheck() {
         });
 }
 
-/*  5. FAVORİLERİ YÜKLE */
+/*  FAVORİLERİ YÜKLE */
 export function loadFavoriteRecipes() {
     const container = document.getElementById('favorites-grid');
     if (!container) return;
@@ -868,7 +868,7 @@ document.getElementById('editRecipeForm')?.addEventListener('submit', async (e) 
     }
 });
 /**
- * 8. BLOG YORUMLARINI LİSTELEME
+ * BLOG YORUMLARINI LİSTELEME
  */
 
 export function renderComments(allComments) {
@@ -955,7 +955,7 @@ window.updateServings = (change) => {
     });
 };
 /**
- * 10. SOSYAL MEDYA PAYLAŞIM MOTORU (WhatsApp & Pinterest)
+ * SOSYAL MEDYA PAYLAŞIM MOTORU (WhatsApp & Pinterest)
  */
 export function setupSocialSharing() {
     // 1. Bulunulan sayfanın linkini ve başlığını güvenli formatta al

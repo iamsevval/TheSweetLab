@@ -40,7 +40,7 @@ router.post('/add-recipe', upload.single('image'), (req, res) => {
         res.json({
             success: true,
             message: "Tarif başarıyla eklendi!",
-            new_recipe_id: this.lastID  // <--- BU SATIR EKLENDİ
+            new_recipe_id: this.lastID 
         });
     });
 });

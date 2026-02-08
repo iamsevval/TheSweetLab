@@ -185,32 +185,6 @@ app.post('/api/update-recipe/:id', uploadConfig.single('image'), (req, res) => {
     });
 });
 
-// YORUM SİLME 
-app.delete('/api/delete-comment/:id', (req, res) => {
-    const commentId = req.params.id;
-    const userId = req.session.userId;
-
-    if (!userId) {
-        return res.status(401).json({ success: false, error: 'Giriş yapmalısın.' });
-    }
-
-    // SQLite için 'db.query' yerine 'db.get' ve 'db.run' kullanıyoruz
-    const checkSql = 'SELECT user_id FROM comments WHERE id = ?';
-    
-    db.get(checkSql, [commentId], (err, row) => {
-        if (err || !row) return res.json({ success: false, error: 'Yorum bulunamadı.' });
-
-        if (row.user_id !== userId) {
-            return res.status(403).json({ success: false, error: 'Sadece kendi yorumunu silebilirsin!' });
-        }
-
-        db.run('DELETE FROM comments WHERE id = ? OR parent_id = ?', [commentId, commentId], (err) => {
-            if (err) return res.json({ success: false, error: 'Silme işlemi başarısız.' });
-            res.json({ success: true });
-        });
-    });
-});
-
 // 6. SAYFA YÖNLENDİRMELERİ 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
